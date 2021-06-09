@@ -15,26 +15,28 @@ addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 run ../lib/CPP_SPM/initCppSpm.m;
 
 % get all the parameters needed
-opt = getOptionVisLocaliser();
-
+%opt = getOptionVisLocaliser();
+opt = getOptionAudLocaliser();
 
 %% Run batches
 reportBIDS(opt);
 bidsCopyRawFolder(opt, 1);
 
-% %
-% bidsSTC(opt);
-% % %
-% bidsSpatialPrepro(opt);
+% slice time correction
+bidsSTC(opt);
+
+% spatial preprocessing
+bidsSpatialPrepro(opt);
 %
 % % Quality control
 % % anatomicalQA(opt);
 % % bidsResliceTpmToFunc(opt);
 % % functionalQA(opt);
 %
-% % smoothing
+
+% % smoothing first level
 funcFWHM = 6;
-% bidsSmoothing(funcFWHM, opt);
+bidsSmoothing(funcFWHM, opt);
 %
 %
 % subject level univariate
@@ -46,6 +48,11 @@ bidsFFX('contrasts', opt, funcFWHM);
 % bidsSmoothing(funcFWHM, opt);
 % bidsFFX('specifyAndEstimate', opt, funcFWHM);
 % bidsFFX('contrasts', opt, funcFWHM);
+
+% funcFWHM = 0;
+% bidsFFX('specifyAndEstimate', opt, funcFWHM);
+% bidsFFX('contrasts', opt, funcFWHM);
+
 %
 % %visualise the results
 % %bidsResults(opt, funcFWHM);

@@ -1,30 +1,52 @@
 {
-  "Name": "Motion localizer",
-  "Description": "contrasts for the motion localizer dataset",
+  "Name": "Visual Motion Localizer",
+  "Description": "contrasts for the bimodal motion dataset",
   "Input": {
     "task": "visualLocalizer"
   },
   "Steps": [
     {
       "Level": "run",
+      "Transformations": [
+        {
+          "Name": "Factor",
+          "Inputs": ["trial_type"]
+        },
+        {
+          "Name": "Convolve",
+          "Model": "spm",
+          "Inputs": [
+            "trial_type.motion", "trial_type.static"
+          ]
+        }
+      ],
       "Model": {
         "X": [
           "trial_type.static",
           "trial_type.motion",
           "trial_type.response",
           "trans_x", "trans_y", "trans_z", "rot_x", "rot_y", "rot_z"
-        ]
+        ],
+        "Options": {
+          "high_pass_filter_cutoff_secs": 128
+        },
+        "Software": {
+          "SPM": {
+            "whitening": "AR(1)"
+          }
+        },
+        "Mask": ""
       },
       "AutoContrasts": [
+        "trial_type.motion",
         "trial_type.static",
-        "trial_type.motion" ,
         "trial_type.response"]
     },
     {
       "Level": "subject",
       "AutoContrasts": [
+        "trial_type.motion",
         "trial_type.static",
-        "trial_type.motion" ,
         "trial_type.response"],
       "Contrasts": [
         {
@@ -34,13 +56,13 @@
           ],
           "weights": [1, -1],
           "type": "t"
-        },
+        }
         {
           "Name": "static_gt_motion",
           "ConditionList": [
-            "trial_type.motion", "trial_type.static"
+            "trial_type.static", "trial_type.motion"
           ],
-          "weights": [-1, 1],
+          "weights": [1, -1],
           "type": "t"
         }
       ]

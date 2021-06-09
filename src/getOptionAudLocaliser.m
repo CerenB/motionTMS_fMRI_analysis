@@ -1,6 +1,6 @@
 % (C) Copyright 2020 Remi Gau, Marco Barilari
 
-function opt = getOptionVisLocaliser()
+function opt = getOptionAudLocaliser()
     %
     % returns a structure that contains the options chosen by the user to run
     % slice timing correction, pre-processing, subject and group level analysis.
@@ -27,7 +27,7 @@ function opt = getOptionVisLocaliser()
   opt.space = 'MNI'; % 'individual', 'MNI'
 
   % task to analyze
-  opt.taskName = 'visualLocalizer'; % auditoryLocalizer
+  opt.taskName = 'auditoryLocalizer';
 
   %% set paths
   opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
@@ -44,7 +44,7 @@ function opt = getOptionVisLocaliser()
     % univariate
     opt.model.file =  ...
         fullfile(fileparts(mfilename('fullpath')), '..', ...
-                 'model', 'model-visualLocalizer_smdl2.json');
+                 'model', 'model-auditoryLocalizer_smdl2.json');
 
 
   % to add the hrf temporal derivative = [1 0]
@@ -120,7 +120,7 @@ function opt = getOptionVisLocaliser()
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
-  opt.parallelize.do = true;
+  opt.parallelize.do = false;
   opt.parallelize.nbWorkers = 3;
   opt.parallelize.killOnExit = true;
 

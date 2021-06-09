@@ -11,21 +11,18 @@
         "X": [
           "trial_type.static",
           "trial_type.motion",
-          "trial_type.response",
           "trans_x", "trans_y", "trans_z", "rot_x", "rot_y", "rot_z"
         ]
       },
       "AutoContrasts": [
         "trial_type.static",
-        "trial_type.motion" ,
-        "trial_type.response"]
+        "trial_type.motion" ]
     },
     {
       "Level": "subject",
       "AutoContrasts": [
         "trial_type.static",
-        "trial_type.motion" ,
-        "trial_type.response"],
+        "trial_type.motion" ],
       "Contrasts": [
         {
           "Name": "motion_gt_static",

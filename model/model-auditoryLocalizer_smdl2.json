@@ -2,7 +2,7 @@
   "Name": "Motion localizer",
   "Description": "contrasts for the motion localizer dataset",
   "Input": {
-    "task": "visualLocalizer"
+    "task": "auditoryLocalizer"
   },
   "Steps": [
     {
@@ -17,15 +17,13 @@
       },
       "AutoContrasts": [
         "trial_type.static",
-        "trial_type.motion" ,
-        "trial_type.response"]
+        "trial_type.motion" ]
     },
     {
       "Level": "subject",
       "AutoContrasts": [
         "trial_type.static",
-        "trial_type.motion" ,
-        "trial_type.response"],
+        "trial_type.motion" ],
       "Contrasts": [
         {
           "Name": "motion_gt_static",
