@@ -16,7 +16,7 @@ function opt = getOptionVisLocaliser()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001'};
+  opt.subjects = {'099'};
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp

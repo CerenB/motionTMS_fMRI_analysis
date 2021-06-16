@@ -16,7 +16,7 @@ function opt = getOptionAudLocaliser()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001'};
+  opt.subjects = {'099'};
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -24,7 +24,7 @@ function opt = getOptionAudLocaliser()
 
   % we stay in native space (that of the T1)
   % - in "native" space: don't do normalization
-  opt.space = 'MNI'; % 'individual', 'MNI'
+  opt.space = 'individual'; % 'individual', 'MNI'
 
   % task to analyze
   opt.taskName = 'auditoryLocalizer';
@@ -44,7 +44,7 @@ function opt = getOptionAudLocaliser()
     % univariate
     opt.model.file =  ...
         fullfile(fileparts(mfilename('fullpath')), '..', ...
-                 'model', 'model-auditoryLocalizer_smdl2.json');
+                 'model', 'model-auditoryLocalizer_smdl.json');
 
 
   % to add the hrf temporal derivative = [1 0]

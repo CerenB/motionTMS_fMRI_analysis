@@ -15,7 +15,7 @@ addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 run ../lib/CPP_SPM/initCppSpm.m;
 
 % get all the parameters needed
-%opt = getOptionVisLocaliser();
+% opt = getOptionVisLocaliser();
 opt = getOptionAudLocaliser();
 
 %% Run batches
@@ -35,7 +35,7 @@ bidsSpatialPrepro(opt);
 %
 
 % % smoothing first level
-funcFWHM = 6;
+funcFWHM = 0;
 bidsSmoothing(funcFWHM, opt);
 %
 %
@@ -43,15 +43,6 @@ bidsSmoothing(funcFWHM, opt);
 bidsFFX('specifyAndEstimate', opt, funcFWHM);
 bidsFFX('contrasts', opt, funcFWHM);
 %
-%
-% funcFWHM = 3;
-% bidsSmoothing(funcFWHM, opt);
-% bidsFFX('specifyAndEstimate', opt, funcFWHM);
-% bidsFFX('contrasts', opt, funcFWHM);
-
-% funcFWHM = 0;
-% bidsFFX('specifyAndEstimate', opt, funcFWHM);
-% bidsFFX('contrasts', opt, funcFWHM);
 
 %
 % %visualise the results

@@ -1,5 +1,5 @@
 {
-  "Name": "Motion localizer",
+  "Name": "visualLocalizer",
   "Description": "contrasts for the motion localizer dataset",
   "Input": {
     "task": "visualLocalizer"
