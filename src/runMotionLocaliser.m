@@ -7,7 +7,7 @@ clc;
 warning('off');
 addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 % bspm fmri
-% addpath(genpath('/Users/battal/Documents/MATLAB/bspmview'));
+addpath(genpath('/Users/battal/Documents/MATLAB/bspmview'));
 % add xjview
 % addpath(genpath('/Users/battal/Documents/MATLAB/xjview'));
 
@@ -28,14 +28,14 @@ bidsSTC(opt);
 % spatial preprocessing
 bidsSpatialPrepro(opt);
 %
-% % Quality control
-% % anatomicalQA(opt);
-% % bidsResliceTpmToFunc(opt);
-% % functionalQA(opt);
-%
+% % % Quality control
+% anatomicalQA(opt);
+% bidsResliceTpmToFunc(opt);
+% functionalQA(opt);
+% %
 
 % % smoothing first level
-funcFWHM = 0;
+funcFWHM = 6;
 bidsSmoothing(funcFWHM, opt);
 %
 %
@@ -49,9 +49,9 @@ bidsFFX('contrasts', opt, funcFWHM);
 % %bidsResults(opt, funcFWHM);
 %
 % % % group level univariate
-% % conFWHM = 8;
-% % bidsRFX('smoothContrasts', opt,funcFWHM, conFWHM);
-% % bidsRFX('RFX', opt, funcFWHM, conFWHM);
+conFWHM = 8;
+bidsRFX('smoothContrasts', opt,funcFWHM, conFWHM);
+bidsRFX('RFX', opt, funcFWHM, conFWHM);
 %
 % % WIP: group level results
 % % bidsResults(opt, FWHM);
