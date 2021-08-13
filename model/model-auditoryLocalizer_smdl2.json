@@ -42,6 +42,10 @@
           "type": "t"
         }
       ]
+    },
+    {
+      "Level": "dataset",
+      "AutoContrasts": ["trial_type.motion", "trial_type.static", "motion_gt_static", "static_gt_motion"]
     }
   ]
 }
