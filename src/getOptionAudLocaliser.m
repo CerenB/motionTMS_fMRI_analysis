@@ -16,15 +16,17 @@ function opt = getOptionAudLocaliser()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'099'};
+  opt.subjects = {'001', '003', '004', '005', '006', '007', '008', ...
+                  '009','010', '011', '012', '013','014', '015', '016'};
 
+              
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
   opt.realign.useUnwarp = true;
 
   % we stay in native space (that of the T1)
   % - in "native" space: don't do normalization
-  opt.space = 'individual'; % 'individual', 'MNI'
+  opt.space = 'MNI'; % 'individual', 'MNI'
 
   % task to analyze
   opt.taskName = 'auditoryLocalizer';
@@ -102,16 +104,16 @@ function opt = getOptionAudLocaliser()
   %   opt.result.Steps(1).Output.NIDM_results = true();
 
   % Options for slice time correction
-  opt.sliceOrder = [0, 0.9051, 0.0603, 0.9655, 0.1206, 1.0258, 0.181, ...
-                    1.0862, 0.2413, 1.1465, 0.3017, 1.2069, 0.362, ...
-                    1.2672, 0.4224, 1.3275, 0.4827, 1.3879, 0.5431, ...
-                    1.4482, 0.6034, 1.5086, 0.6638, 1.5689, 0.7241, ...
-                    1.6293, 0.7844, 1.6896, 0.8448, 0, 0.9051, 0.0603, ...
-                    0.9655, 0.1206, 1.0258, 0.181, 1.0862, 0.2413, ...
-                    1.1465, 0.3017, 1.2069, 0.362, 1.2672, 0.4224, ...
-                    1.3275, 0.4827, 1.3879, 0.5431, 1.4482, 0.6034, ...
-                    1.5086, 0.6638, 1.5689, 0.7241, 1.6293, 0.7844, ...
-                    1.6896, 0.8448];
+%   opt.sliceOrder = [0, 0.9051, 0.0603, 0.9655, 0.1206, 1.0258, 0.181, ...
+%                     1.0862, 0.2413, 1.1465, 0.3017, 1.2069, 0.362, ...
+%                     1.2672, 0.4224, 1.3275, 0.4827, 1.3879, 0.5431, ...
+%                     1.4482, 0.6034, 1.5086, 0.6638, 1.5689, 0.7241, ...
+%                     1.6293, 0.7844, 1.6896, 0.8448, 0, 0.9051, 0.0603, ...
+%                     0.9655, 0.1206, 1.0258, 0.181, 1.0862, 0.2413, ...
+%                     1.1465, 0.3017, 1.2069, 0.362, 1.2672, 0.4224, ...
+%                     1.3275, 0.4827, 1.3879, 0.5431, 1.4482, 0.6034, ...
+%                     1.5086, 0.6638, 1.5689, 0.7241, 1.6293, 0.7844, ...
+%                     1.6896, 0.8448];
   
   opt.sliceOrder = [];
   opt.STC_referenceSlice = [];
@@ -121,8 +123,24 @@ function opt = getOptionAudLocaliser()
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
   opt.parallelize.do = false;
-  opt.parallelize.nbWorkers = 3;
+  opt.parallelize.nbWorkers = 1;
   opt.parallelize.killOnExit = true;
+  
+  % for QA 
+  opt.QA.func.carpetPlot = true; % plot carpet plot when running functionaQA
+
+  % opt.QA.func contains a lot of options used by spmup_first_level_qa in functionaQA
+  opt.QA.func.MotionParameters = 'on';
+  opt.QA.func.FramewiseDisplacement = 'on';
+  opt.QA.func.Voltera = 'on';
+  opt.QA.func.Globals = 'on';
+  % set it to off to skip generating movies of the time series
+  opt.QA.func.Movie = 'off' ; 
+  opt.QA.func.Basics = 'on';
+
+  % the option to skip the GLM QA that sometimes took ages for you:
+  opt.QA.glm.do = false;
+  opt.glm.QA.do = false;
 
   %% DO NOT TOUCH
   opt = checkOptions(opt);
