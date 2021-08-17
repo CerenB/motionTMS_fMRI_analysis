@@ -15,8 +15,8 @@ addpath(genpath('/Users/battal/Documents/MATLAB/bspmview'));
 run ../lib/CPP_SPM/initCppSpm.m;
 
 % get all the parameters needed
-% opt = getOptionVisLocaliser();
-opt = getOptionAudLocaliser();
+opt = getOptionVisLocaliser();
+% opt = getOptionAudLocaliser();
 
 %% Run batches
 reportBIDS(opt);

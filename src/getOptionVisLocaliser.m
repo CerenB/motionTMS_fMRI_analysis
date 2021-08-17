@@ -16,7 +16,10 @@ function opt = getOptionVisLocaliser()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'011'};
+  opt.subjects = {'001', '003', '004', '005', '006', '007', '008', ...
+      '009','010', '011', '012', '013','014', '015', '016', '017'};
+  % '001', '003', '004', '005', '006', '007', '008'
+  % '009','010', '011', '012', '013','014', '015', '016', '017'
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -112,6 +115,22 @@ function opt = getOptionVisLocaliser()
   opt.parallelize.do = false;
   opt.parallelize.nbWorkers = 1;
   opt.parallelize.killOnExit = true;
+  
+    % for QA 
+  opt.QA.func.carpetPlot = true; % plot carpet plot when running functionaQA
+
+  % opt.QA.func contains a lot of options used by spmup_first_level_qa in functionaQA
+  opt.QA.func.MotionParameters = 'on';
+  opt.QA.func.FramewiseDisplacement = 'on';
+  opt.QA.func.Voltera = 'on';
+  opt.QA.func.Globals = 'on';
+  % set it to off to skip generating movies of the time series
+  opt.QA.func.Movie = 'off' ; 
+  opt.QA.func.Basics = 'on';
+
+  % the option to skip the GLM QA that sometimes took ages for you:
+  opt.QA.glm.do = false;
+  opt.glm.QA.do = false;
 
   %% DO NOT TOUCH
   opt = checkOptions(opt);
